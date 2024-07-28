@@ -5,12 +5,18 @@ import BaseSVG from './components/BaseSVG';
 import GaugeArc from './components/GaugeArc';
 import Label from "./components/Label";
 import Pointer from "./components/Pointer";
-import InvertedTriangle from "./components/InvertedTriangle";
+// import InvertedTriangle from "./components/InvertedTriangle";
 import UnitOfMeasurement from "./components/UnitOfMeasurement";
+import Circle from "./components/Circle";
 
 const defaultSize = 250;
 
 const Gauge = ({
+  removeDial = false,
+  dialProps = {
+    dialColor: 'black',
+    dialRadius: 135
+  },
   height,
   width,
   disabled,
@@ -54,6 +60,8 @@ const Gauge = ({
       }}
       {...props}
     >
+      <Circle cx={140} cy={140} r={12} stroke="black" strokeWidth={1} fill="black" />
+      {!removeDial && (<Circle cx={140} cy={140} r={dialProps.dialRadius ?? 135} stroke={dialProps.dialColor ?? 'black'} strokeWidth={5} fill="transparent" />)}
       <GaugeArc
         stroke={"#344c69"}
         strokeWidth={4}
@@ -93,7 +101,7 @@ const Gauge = ({
           />
         </g>
       ))}
-      <InvertedTriangle center={gaugeOrigin} disabled={disabled} />
+      {/* <InvertedTriangle center={gaugeOrigin} disabled={disabled} /> */}
       <Pointer
         value={disabled ? -0.025 : valueRef}
         center={gaugeOrigin}

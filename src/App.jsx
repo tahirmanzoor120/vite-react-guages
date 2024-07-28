@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import Gauge from "./Gauge";
+import FuelGauge from "./FuelGauge";
+import VoltMeter from "./VoltMeter";
 import useGradient from "./hooks/useGradient";
 
 import {
@@ -22,7 +24,7 @@ const App = () => {
     const [maxAngle, setMaxAngle] = useState(135);
     const [disabled, setDisabled] = useState(false);
     const [tickCount, setTickCount] = useState(11);
-    const [uom, setUom] = useState("Units");
+    const [uom, setUom] = useState("Km/h");
     const [uomOffset, setUomOffset] = useState(-15);
     const [labelOffset, setLabelOffset] = useState(-7);
 
@@ -63,8 +65,8 @@ const App = () => {
                     style={{
                         marginRight: "1em",
                         marginBottom: "1em",
-                        width: 650,
-                        height: 800
+                        width: 280,
+                        height: 380
                     }}
                 >
                     <CardHeader title="Speed Gauge" />
@@ -73,7 +75,6 @@ const App = () => {
                             dialProps={{
                                 dialColor: 'gold',
                             }}
-                            height={600}
                             min={min}
                             max={max}
                             value={value}
@@ -84,7 +85,76 @@ const App = () => {
                             tickCount={Number(tickCount)}
                             uom={uom}
                             uomProps={{
-                                offsetText: uomOffset
+                                offsetX: -28,
+                                offsetY: 56,
+                                fontSize: 24
+                            }}
+                            labelProps={{
+                                offsetText: labelOffset,
+                            }}
+                            arcSegments={arcSegments}
+                            
+                        />
+                    </CardContent>
+                </Card>
+                <Card
+                    style={{
+                        marginRight: "1em",
+                        marginBottom: "1em",
+                        width: 280,
+                        height: 380
+                    }}
+                >
+                    <CardHeader title="Fuel Gauge" />
+                    <CardContent>
+                        <FuelGauge
+                            dialProps={{
+                                dialColor: 'blue',
+                            }}
+                            min={0}
+                            max={210}
+                            value={value}
+                            maxAngle={80}
+                            minAngle={-80}
+                            disabled={disabled}
+                            pointerLabel={disabled ? "Disabled" : value}
+                            tickCount={Number(7)}
+                            uom={'L'}
+                            uomProps={{
+                                offsetX: -8,
+                                offsetY: 52,
+                                fontSize: 24
+                            }}
+                            labelProps={{
+                                offsetText: labelOffset,
+                            }}
+                            arcSegments={arcSegments}
+                        />
+                    </CardContent>
+                </Card>
+                <Card
+                    style={{
+                        marginRight: "1em",
+                        marginBottom: "1em",
+                        width: 280,
+                        height: 380
+                    }}
+                >
+                    <CardHeader title="Volt Meter" />
+                    <CardContent>
+                        <VoltMeter
+                            dialProps={{
+                                dialColor: 'blue',
+                                dialColorInner: 'red'
+                            }}
+                            value={value}
+                            disabled={disabled}
+                            pointerLabel={disabled ? "Disabled" : value}
+                            uom={'V'}
+                            uomProps={{
+                                offsetX: -8,
+                                offsetY: 75,
+                                fontSize: 30
                             }}
                             labelProps={{
                                 offsetText: labelOffset,

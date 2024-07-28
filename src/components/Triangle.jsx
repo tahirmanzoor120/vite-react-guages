@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { symbol, symbolTriangle } from "d3";
 
-const InvertedTriangle = ({ center, disabled }) => {
+const Triangle = ({ center, disabled }) => {
   const pathData = useMemo(() => symbol().type(symbolTriangle)(), []);
 
   return (
@@ -19,4 +19,4 @@ const InvertedTriangle = ({ center, disabled }) => {
   );
 };
 
-export default InvertedTriangle;
+export default Triangle;

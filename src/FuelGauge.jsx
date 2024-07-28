@@ -12,7 +12,7 @@ import Rectangle from "./components/Rectangle";
 
 const defaultSize = 250;
 
-const Gauge = ({
+const FuelGauge = ({
   removeDial = false,
   dialProps = {
     dialColor: 'black',
@@ -33,9 +33,7 @@ const Gauge = ({
   },
   uom = "",
   uomProps = {
-    offsetX: -17.5,
-    offsetY: 60,
-    fontWeight: 18
+    offsetText: -7.5
   },
   pointerLabel = "",
   ...props
@@ -64,10 +62,10 @@ const Gauge = ({
       {...props}
     >
       <Rectangle
-        x={90}
-        y={220}
-        width={96}
-        height={30}
+        x={100}
+        y={210}
+        width={80}
+        height={36}
         fill="yellow"
         stroke="green"
         strokeWidth={3}
@@ -76,7 +74,9 @@ const Gauge = ({
         numberSize={24}
       />
       <Circle cx={140} cy={140} r={12} stroke="#333" strokeWidth={1} fill="#333" />
-      {!removeDial && (<Circle cx={140} cy={140} r={dialProps.dialRadius ?? 135} stroke={dialProps.dialColor ?? 'black'} strokeWidth={5} fill="transparent" />)}
+      {!removeDial && (
+        <Circle cx={140} cy={140} r={dialProps.dialRadius ?? 135} stroke={dialProps.dialColor ?? 'black'} strokeWidth={5} fill="transparent" />)
+      }
       <GaugeArc
         stroke={"#344c69"}
         strokeWidth={4}
@@ -131,8 +131,36 @@ const Gauge = ({
         center={gaugeOrigin}
         {...uomProps}
       />
+      <text
+        x={60}
+        y={180}
+        fontSize={64}
+        fontFamily="Roboto, sans-serif"
+        dominantBaseline="middle"
+        textAnchor="middle"
+        style={{
+          fontWeight: 'bolder',
+          transition: "all 0.25s 0.25s"
+        }}
+      >
+        E
+      </text>
+      <text
+        x={230}
+        y={180}
+        fontSize={64}
+        fontFamily="Roboto, sans-serif"
+        dominantBaseline="middle"
+        textAnchor="middle"
+        style={{
+          fontWeight: 'bolder',
+          transition: "all 0.25s 0.25s"
+        }}
+      >
+        F
+      </text>
     </BaseSVG>
   );
 };
 
-export default Gauge;
+export default FuelGauge;

@@ -60,7 +60,7 @@ const Gauge = ({
       }}
       {...props}
     >
-      <Circle cx={140} cy={140} r={12} stroke="black" strokeWidth={1} fill="black" />
+      <Circle cx={140} cy={140} r={12} stroke="#333" strokeWidth={1} fill="#333" />
       {!removeDial && (<Circle cx={140} cy={140} r={dialProps.dialRadius ?? 135} stroke={dialProps.dialColor ?? 'black'} strokeWidth={5} fill="transparent" />)}
       <GaugeArc
         stroke={"#344c69"}

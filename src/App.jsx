@@ -87,7 +87,7 @@ const App = () => {
                                 offsetText: uomOffset
                             }}
                             labelProps={{
-                                offsetText: labelOffset
+                                offsetText: labelOffset,
                             }}
                             arcSegments={arcSegments}
                         />
